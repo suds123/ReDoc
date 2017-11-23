@@ -1,39 +1,79 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ReDoc</title>
-    <link rel="stylesheet" href="main.css">
+    <title>ReDoc Demo: Multiple apis</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://cdn.vaadin.com/vaadin-core-elements/1.2.0/webcomponentsjs/webcomponents-lite.min.js"></script>
-    <link rel="import" href="https://cdn.vaadin.com/vaadin-core-elements/1.2.0/vaadin-combo-box/vaadin-combo-box-light.html">
+    <style>
+      body {
+        margin: 0;
+        padding-top: 40px;
+      }
+
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 100;
+      }
+      #links_container {
+          margin: 0;
+          padding: 0;
+          background-color: #0033a0;
+      }
+
+      #links_container li {
+          display: inline-block;
+          padding: 10px;
+          color: white;
+          cursor: pointer;
+      }
+    </style>
   </head>
   <body>
+
+    <!-- Top navigation placeholder -->
     <nav>
-      <header> <a href="/ReDoc"> ReDoc </a> </header>
-      <template is="dom-bind" id="specs">
-        <form id="schema-url-form" is="iron-form">
-          <vaadin-combo-box-light id="spec-input" items="[[specs]]" allow-custom-value>
-            <input placeholder="URL to a spec to try" id="schema-url-input" type="text" is="iron-input" value="https://rebilly.github.io/RebillyAPI/swagger.json">
-          </vaadin-combo-box-light>
-          <button type="submit"> Explore </button>
-        </form>
-      </template>
-      <iframe src="https://ghbtns.com/github-btn.html?user=Rebilly&repo=ReDoc&type=star&count=true&size=large"
-      frameborder="0" scrolling="0" width="150px" height="30px"></iframe>
+      <ul id="links_container">
+      </ul>
     </nav>
 
-    <redoc scroll-y-offset="body > nav" spec-url='swagger.yaml' lazy-rendering untrusted-spec></redoc>
+    <redoc scroll-y-offset="body > nav"></redoc>
 
-    <script src="main.js"> </script>
-    <script src="./dist/redoc.min.js"> </script>
+    <script src="https://rebilly.github.io/ReDoc/releases/v1.x.x/redoc.min.js"> </script>
     <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      // list of APIS
+      var apis = [
+        {
+          name: 'PetStore',
+          url: 'https://rebilly.github.io/ReDoc/swagger.yaml'
+        },
+        {
+          name: 'Instagram',
+          url: 'https://api.apis.guru/v2/specs/instagram.com/1.0.0/swagger.yaml'
+        },
+        {
+          name: 'Google Calendar',
+          url: 'https://api.apis.guru/v2/specs/googleapis.com/calendar/v3/swagger.yaml'
+        }
+      ];
 
-      ga('create', 'UA-81703547-1', 'auto');
-      ga('send', 'pageview');
+      // initially render first API
+      Redoc.init(apis[0].url);
+
+      function onClick() {
+        var url = this.getAttribute('data-link');
+        Redoc.init(url);
+      }
+
+      // dynamically building navigation items
+      var $list = document.getElementById('links_container');
+      apis.forEach(function(api) {
+        var $listitem = document.createElement('li');
+        $listitem.setAttribute('data-link', api.url);
+        $listitem.innerText = api.name;
+        $listitem.addEventListener('click', onClick);
+        $list.appendChild($listitem);
+      });
     </script>
   </body>
 </html>
