@@ -1,23 +1,11 @@
-openapi: 3.0.0
-servers:
-  - url: //petstore.swagger.io/v2
-    description: Default server
-  - url: //petstore.swagger.io/sandbox
-    description: Sandbox server
+openapi: "3.0.0"
 info:
-  description: >
-    This is a Petstore server.
-
-version: 1.0.0
+  version: 1.0.0
   title: Swagger Petstore
-  x-logo:
-    url: 'https://rebilly.github.io/ReDoc/petstore-logo.png'
   license:
-    name: Apache 2.0
-    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
-externalDocs:
-  description: Find out how to create Github repo for your OpenAPI spec.
-  url: 'https://github.com/Rebilly/generator-openapi-repo'
+    name: MIT
+servers:
+  - url: http://petstore.swagger.io/v1
 tags:
   - name: pet
     description: Everything about your Pets
@@ -25,14 +13,6 @@ tags:
     description: Access to Petstore orders
   - name: user
     description: Operations about user
-x-tagGroups:
-  - name: General
-    tags:
-      - pet
-      - store
-  - name: User Management
-    tags:
-      - user
 paths:
   /pet:
     post:
