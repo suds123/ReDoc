@@ -47,7 +47,7 @@
       var apis = [
         {
           name: 'PetStore',
-          url: 'https://github.com/suds123/ReDoc/blob/gh-pages/swagger.yaml'
+          url: 'https://raw.githubusercontent.com/suds123/ReDoc/gh-pages/swagger.yaml'
         },
         {
           name: 'Instagram',
@@ -60,7 +60,7 @@
       ];
 
       // initially render first API
-      Redoc.init('https://github.com/suds123/ReDoc/blob/gh-pages/swagger.yaml', {scrollYOffset: "body > nav"}, document.getElementById('redoc-container'));
+      Redoc.init('https://raw.githubusercontent.com/suds123/ReDoc/gh-pages/swagger.yaml', {scrollYOffset: "body > nav"}, document.getElementById('redoc-container'));
 
       function onClick() {
         alert('inside');
