@@ -143,7 +143,14 @@ paths:
                 var_dump($e->getErrors());
             }
       requestBody:
-        $ref: '#/components/requestBodies/Pet'
+        content:      
+          'application/json':
+            schema:
+              $ref: '#/components/requestBodies/Pet'
+            examples: 
+              jsonExample:
+                summary: This is a cat example in json
+                externalValue: './cat.json'          
     put:
       tags:
         - pet
