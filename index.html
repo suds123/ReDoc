@@ -42,6 +42,7 @@
 
     <script src="https://unpkg.com/redoc/bundles/redoc.standalone.js"> </script>
     <script>
+      alert('suds');
       // list of APIS
       var apis = [
         {
@@ -62,6 +63,7 @@
       Redoc.init(apis[0].url, {scrollYOffset: "body > nav"}, document.getElementById('redoc-container'));
 
       function onClick() {
+        alert('inside');
         var url = this.getAttribute('data-link');
         //Redoc.init(url);
         Redoc.init(url, {scrollYOffset: "body > nav"}, document.getElementById('redoc-container'));
