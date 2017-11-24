@@ -189,7 +189,7 @@ paths:
             examples: 
               jsonExample:
                 summary: This is an example in json
-                externalValue: 'https://raw.githubusercontent.com/suds123/ReDoc/gh-pages/cat.json'      
+                externalValue: ./abc/cat.json'      
   '/pet/{petId}':
     get:
       tags:
