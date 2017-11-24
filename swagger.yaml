@@ -150,7 +150,7 @@ paths:
             examples: 
               jsonExample:
                 summary: This is a cat example in json
-                externalValue: './cat.json'          
+                externalValue: 'https://raw.githubusercontent.com/suds123/ReDoc/gh-pages/cat.json'          
     put:
       tags:
         - pet
@@ -189,7 +189,7 @@ paths:
             examples: 
               jsonExample:
                 summary: This is an example in json
-                externalValue: './cat.json'      
+                externalValue: 'https://raw.githubusercontent.com/suds123/ReDoc/gh-pages/cat.json'      
   '/pet/{petId}':
     get:
       tags:
