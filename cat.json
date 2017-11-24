@@ -1,0 +1,18 @@
+{
+"id": 0,
+"category": {
+"id": 0,
+"name": "string",
+"sub": {}
+},
+"name": "Guru",
+"photoUrls": [
+"string"
+],
+"tags": [
+{}
+],
+"status": "available",
+"petType": "string",
+"huntingSkill": "lazy"
+}
